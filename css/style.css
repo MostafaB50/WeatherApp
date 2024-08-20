@@ -13,6 +13,31 @@
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     font-weight: normal;
+    scrollbar-width: thin;
+    scrollbar-color: var(--red) transparent;
+}
+::-webkit-scrollbar {
+    width: 1vw;
+    background: transparent;
+    z-index: -2;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--red);
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-ms-scrollbar {
+    width: 1vw;
+    background: transparent;
+}
+
+::-ms-scrollbar-thumb {
+    background: var(--red);
+}
+
+::-ms-scrollbar-track {
+    background: transparent;
 }
 body {
     background: #000;
@@ -103,7 +128,46 @@ body {
     background: #5d737e;
     border-radius: 25px;
     text-align: center;
+    animation: slide ease-out 0.5s;
+    -webkit-animation: slide ease-out 0.5s;
+    -moz-animation: slide ease-out 0.5s;
+    -o-animation: slide ease-out 0.5s;
 }
+@keyframes slide {
+    from {
+        transform: translate(200%, -60%);
+    }
+    to {
+        transform: translate(-50%, -60%);
+    }
+}
+@-webkit-keyframes slide {
+    from {
+        transform: translate(200%, -60%);
+    }
+    to {
+        transform: translate(-50%, -60%);
+    }
+}
+
+@-moz-keyframes slide {
+    from {
+        transform: translate(200%, -60%);
+    }
+    to {
+        transform: translate(-50%, -60%);
+    }
+}
+
+@-o-keyframes slide {
+    from {
+        transform: translate(200%, -60%);
+    }
+    to {
+        transform: translate(-50%, -60%);
+    }
+}
+
 .container .start {
     position: fixed;
     top: 0;
@@ -117,6 +181,10 @@ body {
     background: black;
     border-radius: 0;
     overflow: scroll;
+    animation: unset;
+    -webkit-animation: unset 1s;
+    -moz-animation: unset 1s;
+    -o-animation: unset 1s;
 }
 .none {
     display: none !important;
@@ -243,7 +311,45 @@ body {
     color: white;
     left: calc(50% - 155px);
     min-height: 40px;
-    z-index: 100;
+    z-index: 1;
+    transform: scale(0);
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+    -webkit-animation: pop 5s;
+    animation: pop 5s;
+}
+@keyframes pop {
+    0% {
+        transform: scale(0);
+    }
+    10% {
+        transform: scale(1);
+    }
+    90% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+@-webkit-keyframes pop {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+    10% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    90% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    100% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
 }
 @media screen and (max-width: 700px) {
     .container .main .top-banner form {
@@ -284,10 +390,58 @@ body {
     padding: 40px 5px 40px 1.5rem;
     border-radius: 20px;
     margin: 0.5rem auto;
+    bottom: 0px;
     min-width: 20rem;
     max-height: 22rem;
     background: #5d737e;
     color: black;
+    opacity: 1;
+    animation: fadeUp 1s;
+    -webkit-animation: fadeUp 1s;
+    -moz-animation: fadeUp 1s;
+    -o-animation: fadeUp 1s;
+}
+@keyframes fadeUp {
+    from {
+        bottom: -100px;
+        opacity: 0;
+    }
+    to {
+        bottom: 0;
+        opacity: 1;
+    }
+}
+@-webkit-keyframes fadeUp {
+    from {
+        bottom: -100px;
+        opacity: 0;
+    }
+    to {
+        bottom: 0;
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeUp {
+    from {
+        bottom: -100px;
+        opacity: 0;
+    }
+    to {
+        bottom: 0;
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadeUp {
+    from {
+        bottom: -100px;
+        opacity: 0;
+    }
+    to {
+        bottom: 0;
+        opacity: 1;
+    }
 }
 .container .main .ajax-section .city:last-child {
     margin-bottom: 100px;

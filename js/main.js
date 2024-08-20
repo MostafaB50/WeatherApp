@@ -2,6 +2,10 @@ const form = document.querySelector(".container .main .top-banner form");
 const list = document.getElementById("ulcities");
 let liElements = Array.from(document.getElementsByClassName("pop"));
 let mainElements = document.getElementsByClassName("main");
+const msg = document.getElementById("msg");
+window.onclick = () => {
+    msg.style.display = "none";
+};
 let code = "";
 form.addEventListener("submit", e => {
     e.preventDefault();
@@ -9,7 +13,6 @@ form.addEventListener("submit", e => {
 });
 function fetchData(list) {
     const inputVal = document.getElementById("cityname").value;
-    const msg = document.getElementById("msg");
     if (!inputVal) {
         showMsg(msg, "Please provide a city!");
         return;
@@ -40,7 +43,7 @@ function fetchData(list) {
 </figure>
 `;
             li.innerHTML = markup;
-            console.log(main, name, sys, weather, id);
+            // console.log(main, name, sys, weather, id);
             list.appendChild(li);
         })
         .catch(error => {
@@ -49,8 +52,7 @@ function fetchData(list) {
             } else {
                 showMsg(
                     msg,
-                    " City is already here!. <br/>Check info page for more details.",
-                    5000
+                    " City is already here!. <br/>Check info page for more details."
                 );
             }
         });
@@ -58,7 +60,7 @@ function fetchData(list) {
     form.reset();
 }
 function check(id, list, msg) {
-    console.log(id, list, msg);
+    // console.log(id, list, msg);
     for (let i = 0; i < list.childNodes.length; i++) {
         if (id === +list.children[i].children[0].dataset.id) {
             throw new Error("City already excited");
@@ -66,7 +68,7 @@ function check(id, list, msg) {
     }
 }
 
-function showMsg(msg, message, time = 3000) {
+function showMsg(msg, message, time = 5000) {
     msg.style.display = "block";
     msg.innerHTML = message;
     setTimeout(function () {
@@ -83,7 +85,6 @@ liElements.forEach(function (li) {
             }
         } else {
             if (mainElements[1].classList.contains("none")) {
-                /* mainElements[0].style.display = "none";*/
                 mainElements[1].classList.remove("none");
                 mainElements[0].classList.add("none");
             }
